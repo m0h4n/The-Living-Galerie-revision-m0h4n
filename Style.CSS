@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
 }
 
-/* SCREENS */
+/* ── SCREENS ── */
 .screen {
   display: none;
   min-height: 100vh;
@@ -77,6 +77,7 @@ body {
   margin-bottom: 20px;
 }
 
+/* ── IMAGE PLACEHOLDERS ── */
 .img-placeholder {
   background: #333;
   border: 1px solid #555;
@@ -86,6 +87,7 @@ body {
   color: #666;
   font-size: 12px;
   font-family: monospace;
+  filter: grayscale(100%);
 }
 
 .img-placeholder.home-img {
@@ -134,8 +136,7 @@ body {
   height: 8px;
   background: linear-gradient(to right, #444, #222);
   border: 1px solid #555;
-  margin: 0 40px;
-  margin-top: 10px;
+  margin: 10px 40px 0;
   position: relative;
 }
 
@@ -156,6 +157,7 @@ body {
   flex: 1;
 }
 
+/* ── STORY TEXT ── */
 .story-text {
   flex: 1;
 }
@@ -172,6 +174,7 @@ body {
   color: #f0ece0;
 }
 
+/* ── STORY IMAGE ── */
 .story-img {
   width: 280px;
   flex-shrink: 0;
@@ -182,6 +185,7 @@ body {
   height: 200px;
 }
 
+/* ── RIGHT PANEL ── */
 .right-panel {
   width: 160px;
   flex-shrink: 0;
@@ -214,7 +218,7 @@ body {
   padding-top: 10px;
 }
 
-/* BUTTONS */
+/* ── CHOICES / BUTTONS ── */
 .choices {
   padding: 0 40px 30px;
   display: flex;
@@ -250,7 +254,7 @@ body {
   color: #f0ece0;
 }
 
-/* FINAL SCREENS */
+/* ── FINAL SCREENS ── */
 .final-screen {
   background: #111;
 }
@@ -263,7 +267,7 @@ body {
   border-bottom: 1px solid #333;
 }
 
-/* HOME SPECIAL */
+/* ── HOME BUTTON ── */
 .home-btn {
   background: #c8b882;
   color: #1a1a1a;
@@ -278,8 +282,3 @@ body {
 }
 
 .home-btn:hover { background: #b5a56e; }
-
-/* GRAYSCALE TINT */
-filter: grayscale(0%); /* intentional — keeping grayscale on images only */
-
-.img-placeholder { filter: grayscale(100%); }
