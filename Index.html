@@ -1,41 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>The Living Galerie</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Living Galerie</title>
+
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<div class="container">
+<!-- TODO tu contenido HTML se queda EXACTAMENTE igual desde aquí -->
 
-    <div class="header"></div>
+<!-- (NO cambies nada del body) -->
 
-    <div class="white-box"></div>
-
-    <div class="title-bottom">THE LIVING GALERIE</div>
-
-    <div class="text-left">
-        Las obras robadas también merecen ser contadas
-    </div>
-
-    <div class="text-right">
-        Tres alas. Tres caminos. Tres vidas...
-    </div>
-
-    <div class="image-box"></div>
-
-    <div class="title-shadow">THE LIVING GALERIE</div>
-
-    <div class="image-background"></div>
-
-    <img class="image" src="https://placehold.co/466x466" alt="imagen">
-
-    <div class="button">
-        <span>Entrada secreta</span>
-    </div>
-
-</div>
+<script>
+  function go(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(screenId);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  }
+</script>
 
 </body>
 </html>
