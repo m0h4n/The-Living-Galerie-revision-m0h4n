@@ -167,3 +167,195 @@ body {
 .btn:hover {
     opacity: 0.8;
 }
+/* ===================== */
+/* FRAME 3 (OFICINA) */
+/* ===================== */
+
+/* Título izquierda */
+.title-left {
+    position: absolute;
+    top: 55px;
+    left: 121px;
+    font-size: 49px;
+    font-family: 'Baskervville SC', serif;
+    color: rgba(255,255,255,0.2);
+}
+
+/* Barra superior */
+.top-bar {
+    position: absolute;
+    top: 148px;
+    left: 92px;
+    width: 80%;
+    height: 91px;
+    background: linear-gradient(90deg, #4D7752 61%, #851926 100%);
+}
+
+/* Temporizador */
+.timer {
+    position: absolute;
+    top: 250px;
+    left: 660px;
+    color: #D9D9D9;
+    font-weight: 800;
+}
+
+/* Imagen */
+.image-box {
+    position: absolute;
+    top: 294px;
+    left: 915px;
+    width: 433px;
+    height: 284px;
+    background: #D9D9D9;
+}
+
+.image-office {
+    position: absolute;
+    top: 291px;
+    left: 915px;
+    width: 433px;
+    height: 289px;
+}
+
+/* Texto */
+.office-text {
+    position: absolute;
+    top: 289px;
+    left: 92px;
+    width: 760px;
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 19px;
+}
+
+/* Panel inferior */
+.bottom-panel {
+    position: absolute;
+    bottom: 120px;
+    left: 650px;
+    display: flex;
+    gap: 40px;
+}
+
+/* Botones */
+.office-buttons {
+    position: absolute;
+    bottom: 40px;
+    left: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+/* ===================== */
+/* FRAME 4 (ZONA) */
+/* ===================== */
+
+/* Header superior */
+.top-header {
+    position: absolute;
+    top: 0;
+    left: 192px;
+    width: 80%;
+    height: 225px;
+    background: linear-gradient(90deg, #851926 0%, #1F0609 100%);
+}
+
+/* Título sección */
+.title-section {
+    position: absolute;
+    top: 155px;
+    left: 192px;
+    font-size: 49px;
+    font-family: 'Baskervville SC', serif;
+    color: rgba(255,255,255,0.2);
+}
+
+/* Panel derecho específico */
+.right-panel {
+    top: 260px;
+    right: 40px;
+}
+
+/* Texto */
+.zone-text {
+    position: absolute;
+    top: 313px;
+    left: 192px;
+    width: 881px;
+    color: #D9D9D9;
+    font-size: 25px;
+    line-height: 30px;
+}
+
+/* Botones */
+.zone-buttons {
+    position: absolute;
+    bottom: 60px;
+    left: 200px;
+    display: flex;
+    gap: 40px;
+}
+
+/* ===================== */
+/* FRAME 5 (SEGURIDAD) */
+/* ===================== */
+
+/* Título */
+.title-section-left {
+    position: absolute;
+    top: 94px;
+    left: 245px;
+    font-size: 49px;
+    font-family: 'Baskervville SC', serif;
+    color: rgba(255,255,255,0.2);
+}
+
+/* Imagen */
+.security-image-bg {
+    position: absolute;
+    top: 209px;
+    left: 1031px;
+    width: 376px;
+    height: 503px;
+    background: #D9D9D9;
+}
+
+.security-image {
+    position: absolute;
+    top: 206px;
+    left: 1028px;
+    width: 379px;
+    height: 506px;
+}
+
+/* Texto */
+.security-text {
+    position: absolute;
+    top: 192px;
+    left: 201px;
+    width: 760px;
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 19px;
+}
+
+/* Panel inferior alineado izquierda */
+.bottom-panel-left {
+    position: absolute;
+    bottom: 40px;
+    left: 245px;
+    display: flex;
+    gap: 40px;
+}
+
+/* Botones */
+.security-buttons {
+    position: absolute;
+    bottom: 140px;
+    left: 250px;
+    display: flex;
+    gap: 30px;
+}
