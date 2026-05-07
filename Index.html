@@ -4,294 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Living Galerie</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+<link rel="stylesheet" href="Style.CSS">
 
-  body {
-    font-family: Georgia, 'Times New Roman', serif;
-    background: #f5f5f5;
-    color: #1a1a1a;
-    min-height: 100vh;
-  }
-
-  /* SCREENS */
-  .screen {
-    display: none;
-    min-height: 100vh;
-    animation: fadeIn 0.4s ease;
-  }
-  .screen.active { display: flex; flex-direction: column; }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── HOME ── */
-  #home {
-    background: #1a1a1a;
-    color: #f0ece0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: left;
-    padding: 0;
-  }
-
-  .home-top-bar {
-    width: 100%;
-    height: 12px;
-    background: #555;
-  }
-
-  .home-content {
-    display: flex;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 40px;
-    gap: 60px;
-    align-items: center;
-    flex: 1;
-  }
-
-  .home-left h1 {
-    font-size: 64px;
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 2px;
-    font-style: italic;
-    color: #c8b882;
-    margin-bottom: 20px;
-  }
-
-  .home-left p {
-    font-size: 15px;
-    color: #aaa;
-    margin-bottom: 32px;
-    font-style: italic;
-  }
-
-  .home-right {
-    flex: 1;
-    text-align: right;
-  }
-
-  .home-right .tagline {
-    font-size: 20px;
-    font-style: italic;
-    color: #bbb;
-    margin-bottom: 20px;
-  }
-
-  .img-placeholder {
-    background: #333;
-    border: 1px solid #555;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    font-size: 12px;
-    font-family: monospace;
-  }
-
-  .img-placeholder.home-img {
-    width: 260px;
-    height: 200px;
-    margin-left: auto;
-  }
-
-  /* ── GENERIC SCREEN LAYOUT ── */
-  .story-screen {
-    background: #1a1a1a;
-    color: #f0ece0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .screen-top-bar {
-    width: 100%;
-    height: 10px;
-    background: #555;
-    flex-shrink: 0;
-  }
-
-  .screen-label {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #666;
-    padding: 10px 40px 0;
-    font-family: monospace;
-  }
-
-  .screen-title {
-    font-size: 38px;
-    font-weight: 400;
-    font-style: italic;
-    color: #c8b882;
-    padding: 10px 40px 0;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 14px;
-  }
-
-  .timer-bar {
-    height: 8px;
-    background: linear-gradient(to right, #444, #222);
-    border: 1px solid #555;
-    margin: 0 40px;
-    margin-top: 10px;
-    position: relative;
-  }
-
-  .timer-label {
-    font-size: 10px;
-    color: #888;
-    text-align: center;
-    margin-top: 4px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-family: monospace;
-  }
-
-  .screen-body {
-    display: flex;
-    gap: 30px;
-    padding: 20px 40px 30px;
-    flex: 1;
-  }
-
-  .story-text {
-    flex: 1;
-  }
-
-  .story-text p {
-    font-size: 14px;
-    line-height: 1.8;
-    color: #ddd;
-    margin-bottom: 12px;
-  }
-
-  .story-text p strong {
-    font-style: italic;
-    color: #f0ece0;
-  }
-
-  .story-img {
-    width: 280px;
-    flex-shrink: 0;
-  }
-
-  .story-img .img-placeholder {
-    width: 100%;
-    height: 200px;
-  }
-
-  .right-panel {
-    width: 160px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding-top: 4px;
-  }
-
-  .panel-box {
-    border: 1px solid #444;
-    padding: 10px;
-    min-height: 100px;
-    background: #222;
-  }
-
-  .panel-label {
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: #c8b882;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    font-family: monospace;
-  }
-
-  .panel-count {
-    font-size: 24px;
-    color: #c8b882;
-    text-align: center;
-    padding-top: 10px;
-  }
-
-  /* BUTTONS */
-  .choices {
-    padding: 0 40px 30px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .btn {
-    background: transparent;
-    border: 1px solid #c8b882;
-    color: #c8b882;
-    padding: 10px 20px;
-    font-size: 13px;
-    font-family: Georgia, serif;
-    cursor: pointer;
-    letter-spacing: 0.5px;
-    transition: background 0.2s, color 0.2s;
-    text-align: center;
-  }
-
-  .btn:hover {
-    background: #c8b882;
-    color: #1a1a1a;
-  }
-
-  .btn.secondary {
-    border-color: #666;
-    color: #aaa;
-  }
-
-  .btn.secondary:hover {
-    background: #666;
-    color: #f0ece0;
-  }
-
-  /* FINAL SCREENS */
-  .final-screen {
-    background: #111;
-  }
-
-  .final-title {
-    font-size: 34px;
-    color: #c8b882;
-    font-style: italic;
-    padding: 16px 40px;
-    border-bottom: 1px solid #333;
-  }
-
-  /* HOME SPECIAL */
-  .home-btn {
-    background: #c8b882;
-    color: #1a1a1a;
-    border: none;
-    padding: 14px 32px;
-    font-size: 15px;
-    font-family: Georgia, serif;
-    cursor: pointer;
-    letter-spacing: 1px;
-    font-style: italic;
-    transition: background 0.2s;
-  }
-
-  .home-btn:hover { background: #b5a56e; }
-
-  /* GRAYSCALE TINT */
-  filter: grayscale(0%); /* intentional — keeping grayscale on images only */
-
-  .img-placeholder { filter: grayscale(100%); }
-
-</style>
 </head>
 <body>
 
@@ -304,7 +18,7 @@
     <div class="home-left">
       <h1>THE<br>LIVING<br>GALERIE</h1>
       <p>Las obras robadas también merecen ser contadas</p>
-      <button class="home-btn" onclick="go('entrada-secreta')">Entrada secreta →</button>
+      <a class="home-btn" href="#entrada-secreta">Entrada secreta →</a>
     </div>
     <div class="home-right">
       <p class="tagline">Tres alas. Tres caminos. Tres vidas…</p>
@@ -343,9 +57,9 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('encargado')">Ir a la oficina del encargado de la galería</button>
-    <button class="btn" onclick="go('camara')">Revisar sala de seguridad</button>
-    <button class="btn" onclick="go('buscar-otra-zona')">Buscar algo fuera de la exhibición</button>
+    <a class="btn" href="#encargado">Ir a la oficina del encargado de la galería</a>
+    <a class="btn" href="#camara">Revisar sala de seguridad</a>
+    <a class="btn" href="#buscar-otra-zona">Buscar algo fuera de la exhibición</a>
   </div>
 </div>
 
@@ -381,9 +95,9 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('seguridad')">Ir a seguridad</button>
-    <button class="btn" onclick="go('buscar-otra-zona')">Buscar en otra zona</button>
-    <button class="btn" onclick="go('quedarte-presionar')">Quedarte y presionarlo un poco más</button>
+    <a class="btn" href="#seguridad">Ir a seguridad</a>
+    <a class="btn" href="#buscar-otra-zona">Buscar en otra zona</a>
+    <a class="btn" href="#quedarte-presionar">Quedarte y presionarlo un poco más</a>
   </div>
 </div>
 
@@ -414,9 +128,9 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('confrontar-jaime')">Creerle y dirigirse contra Jaime</button>
-    <button class="btn" onclick="go('final-error-fatal')">Acusar formalmente a Marchetti</button>
-    <button class="btn secondary" onclick="go('final-sombras')">Retirarte sin acusar a nadie</button>
+    <a class="btn" href="#confrontar-jaime">Creerle y dirigirse contra Jaime</a>
+    <a class="btn" href="#final-error-fatal">Acusar formalmente a Marchetti</a>
+    <a class="btn secondary" href="#final-sombras">Retirarte sin acusar a nadie</a>
   </div>
 </div>
 
@@ -452,8 +166,8 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('pintura')">Pintura que cambia con la luz</button>
-    <button class="btn" onclick="go('archivo')">Investigar el archivo oculto</button>
+    <a class="btn" href="#pintura">Pintura que cambia con la luz</a>
+    <a class="btn" href="#archivo">Investigar el archivo oculto</a>
   </div>
 </div>
 
@@ -487,8 +201,8 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('camara')">Cámara de seguridad</button>
-    <button class="btn" onclick="go('archivo')">Archivo oculto</button>
+    <a class="btn" href="#camara">Cámara de seguridad</a>
+    <a class="btn" href="#archivo">Archivo oculto</a>
   </div>
 </div>
 
@@ -498,7 +212,7 @@
 <div id="archivo" class="screen story-screen">
   <div class="screen-top-bar"></div>
   <div class="screen-label">Archivo Oculto</div>
-  <div class="screen-title">Archivo oculto ▣</div>
+  <div class="screen-title">Archivo oculto</div>
   <div class="timer-bar"></div>
   <div class="timer-label">Temporizador</div>
   <div class="screen-body">
@@ -524,8 +238,8 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('pintura')">Pintura que cambia con la luz</button>
-    <button class="btn" onclick="go('camara')">Investigar la cámara</button>
+    <a class="btn" href="#pintura">Pintura que cambia con la luz</a>
+    <a class="btn" href="#camara">Investigar la cámara</a>
   </div>
 </div>
 
@@ -535,7 +249,7 @@
 <div id="pintura" class="screen story-screen">
   <div class="screen-top-bar"></div>
   <div class="screen-label">Pista Oculta</div>
-  <div class="screen-title">Pintura que cambia con la luz ⚠</div>
+  <div class="screen-title">Pintura que cambia con la luz</div>
   <div class="timer-bar"></div>
   <div class="timer-label">Temporizador</div>
   <div class="screen-body">
@@ -562,9 +276,9 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('confrontar-jaime')">Confrontar a Jaime</button>
-    <button class="btn" onclick="go('seguridad')">Ir a la sala de seguridad</button>
-    <button class="btn" onclick="go('encargado')">Ir con el encargado de la galería</button>
+    <a class="btn" href="#confrontar-jaime">Confrontar a Jaime</a>
+    <a class="btn" href="#seguridad">Ir a la sala de seguridad</a>
+    <a class="btn" href="#encargado">Ir con el encargado de la galería</a>
   </div>
 </div>
 
@@ -574,7 +288,7 @@
 <div id="catalogo" class="screen story-screen">
   <div class="screen-top-bar"></div>
   <div class="screen-label">Evidencia Clave</div>
-  <div class="screen-title">Catálogo de subasta marcado ▣</div>
+  <div class="screen-title">Catálogo de subasta marcado</div>
   <div class="timer-bar"></div>
   <div class="timer-label">Temporizador</div>
   <div class="screen-body">
@@ -600,9 +314,9 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('camara')">Cámara</button>
-    <button class="btn" onclick="go('lista-compradores')">Lista de compradores sospechosos</button>
-    <button class="btn" onclick="go('archivo')">Archivo oculto</button>
+    <a class="btn" href="#camara">Cámara</a>
+    <a class="btn" href="#lista-compradores">Lista de compradores sospechosos</a>
+    <a class="btn" href="#archivo">Archivo oculto</a>
   </div>
 </div>
 
@@ -639,9 +353,9 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('confrontar-jaime')">Confrontar a Jaime</button>
-    <button class="btn" onclick="go('buscar-otra-zona')">Buscar en otra zona</button>
-    <button class="btn" onclick="go('encargado')">Ir con el encargado de la galería</button>
+    <a class="btn" href="#confrontar-jaime">Confrontar a Jaime</a>
+    <a class="btn" href="#buscar-otra-zona">Buscar en otra zona</a>
+    <a class="btn" href="#encargado">Ir con el encargado de la galería</a>
   </div>
 </div>
 
@@ -675,9 +389,9 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('confrontar-jaime')">Confrontar a Jaime</button>
-    <button class="btn" onclick="go('archivo')">Investigar el archivo oculto</button>
-    <button class="btn" onclick="go('catalogo')">Revisar catálogo de subasta</button>
+    <a class="btn" href="#confrontar-jaime">Confrontar a Jaime</a>
+    <a class="btn" href="#archivo">Investigar el archivo oculto</a>
+    <a class="btn" href="#catalogo">Revisar catálogo de subasta</a>
   </div>
 </div>
 
@@ -714,8 +428,8 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn secondary" onclick="go('final-error-fatal')">Retroceder: aún no es suficiente para una condena</button>
-    <button class="btn" onclick="go('final-justicia')">Acusación formal: llamar al equipo de respaldo</button>
+    <a class="btn secondary" href="#final-error-fatal">Retroceder: aún no es suficiente para una condena</a>
+    <a class="btn" href="#final-justicia">Acusación formal: llamar al equipo de respaldo</a>
   </div>
 </div>
 
@@ -750,8 +464,8 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn secondary" onclick="go('final-error-fatal')">Retroceder: aún no es suficiente para una condena</button>
-    <button class="btn" onclick="go('final-justicia')">Acusación formal: llamar al equipo de respaldo</button>
+    <a class="btn secondary" href="#final-error-fatal">Retroceder: aún no es suficiente para una condena</a>
+    <a class="btn" href="#final-justicia">Acusación formal: llamar al equipo de respaldo</a>
   </div>
 </div>
 
@@ -790,7 +504,7 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('home')">Intentarlo de nuevo</button>
+    <a class="btn" href="#home">Intentarlo de nuevo</a>
   </div>
 </div>
 
@@ -824,7 +538,7 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('home')">Intentarlo de nuevo ↩</button>
+    <a class="btn" href="#home">Intentarlo de nuevo ↩</a>
   </div>
 </div>
 
@@ -843,7 +557,7 @@
       <p>Y Jaime ha desaparecido. Su apartamento, vacío. Su tarjeta, desactivada desde dentro. La carpeta de Madame Pauliña, borrada del servidor.</p>
       <p>Las doce obras de arte se disuelven en el mercado negro como azúcar en agua oscura.</p>
       <p>Te quedas con la sensación de haber tenido la verdad entre las manos y haberla soltado por la sombra que alguien más proyectó sobre ella.</p>
-      <p>🎯 FINAL: ERROR FATAL<br><em>Acusaste al sospechoso equivocado. Jaime escapó.</em></p>
+      <p>FINAL: ERROR FATAL<br><em>Acusaste al sospechoso equivocado. Jaime escapó.</em></p>
     </div>
     <div class="right-panel">
       <div>
@@ -857,7 +571,7 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('home')">Intentarlo de nuevo ↩</button>
+    <a class="btn" href="#home">Intentarlo de nuevo ↩</a>
   </div>
 </div>
 
@@ -867,7 +581,7 @@
 <div id="final-justicia" class="screen story-screen final-screen">
   <div class="screen-top-bar"></div>
   <div class="screen-label">Final 3 — Justicia</div>
-  <div class="final-title">🏆 Final — JUSTICIA</div>
+  <div class="final-title">Final — JUSTICIA</div>
   <div class="screen-body">
     <div class="story-text">
       <p>Cuando los agentes entran a The Living Galerie veinte minutos después, Jaime sigue frente a la escultura de Monserrate.</p>
@@ -890,19 +604,9 @@
     </div>
   </div>
   <div class="choices">
-    <button class="btn" onclick="go('home')">Intentarlo de nuevo ↩</button>
+    <a class="btn" href="#home">Intentarlo de nuevo ↩</a>
   </div>
 </div>
 
-<script>
-  function go(screenId) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    const target = document.getElementById(screenId);
-    if (target) {
-      target.classList.add('active');
-      window.scrollTo(0, 0);
-    }
-  }
-</script>
 </body>
 </html>
