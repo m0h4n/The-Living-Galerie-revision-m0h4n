@@ -71,4 +71,4 @@ function moveToCurrentScene() {
 }
 
 window.addEventListener("hashchange", moveToCurrentScene);
-window.addEventListener("load", moveToCurrentScene);
+window.addEventListener("load", moveToCurrentScene);     
