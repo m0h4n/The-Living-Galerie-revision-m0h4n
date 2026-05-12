@@ -4,34 +4,240 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Living Galerie</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* ═══════════════════════════════════ */
+/* ESTILOS GENERALES                  */
+/* ═══════════════════════════════════ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background:#111;
+    color:white;
+    overflow:hidden;
+}
+
+/* ═══════════════════════════════════ */
+/* PANTALLAS                          */
+/* ═══════════════════════════════════ */
+
+.screen{
+    width:100vw;
+    height:100vh;
+    display:none;
+    padding:50px;
+}
+
+.screen.active{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+/* ═══════════════════════════════════ */
+/* HOME                               */
+/* ═══════════════════════════════════ */
+
+.home-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:50px;
+}
+
+.home-left h1{
+    font-size:80px;
+    line-height:0.9;
+    margin-bottom:20px;
+}
+
+.home-left p{
+    font-size:20px;
+    margin-bottom:30px;
+    color:#ccc;
+}
+
+.home-btn{
+    display:inline-block;
+    padding:15px 30px;
+    background:white;
+    color:black;
+    text-decoration:none;
+    border-radius:10px;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.home-btn:hover{
+    background:#c49b63;
+    color:white;
+    transform:scale(1.05);
+}
+
+.home-right{
+    width:40%;
+}
+
+.tagline{
+    margin-bottom:20px;
+    font-size:18px;
+    color:#aaa;
+}
+
+.img-placeholder{
+    width:100%;
+    height:300px;
+    background:#333;
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+/* ═══════════════════════════════════ */
+/* ENTRADA SECRETA                    */
+/* ═══════════════════════════════════ */
+
+.secret-screen{
+    background:#1a1a1a;
+    text-align:center;
+    align-items:center;
+}
+
+.secret-screen h1{
+    font-size:70px;
+    margin-bottom:20px;
+}
+
+.secret-screen p{
+    font-size:22px;
+    color:#ccc;
+    margin-bottom:30px;
+}
+
+.back-btn{
+    padding:15px 25px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    transform:scale(1.05);
+}
+
+</style>
 
 </head>
 <body>
 
-<div id="timer-widget" class="timer-widget" aria-live="polite" hidden>
-  <span class="timer-kicker">Tiempo</span>
-  <span id="timer-count">02:00</span>
-</div>
+<!-- ═══════════════════════════════════ -->
+<!-- HOME                               -->
+<!-- ═══════════════════════════════════ -->
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!--  HOME                                               -->
-<!-- ═══════════════════════════════════════════════════ -->
 <div id="home" class="screen active">
-  <div class="home-top-bar"></div>
-  <div class="home-content">
-    <div class="home-left">
-      <h1>THE<br>LIVING<br>GALERIE</h1>
-      <p>Las obras robadas también merecen ser contadas</p>
-      <a class="home-btn" href="#entrada-secreta">Entrada secreta →</a>
+
+    <div class="home-content">
+
+        <div class="home-left">
+            <h1>
+                THE<br>
+                LIVING<br>
+                GALERIE
+            </h1>
+
+            <p>
+                Las obras robadas también merecen ser contadas
+            </p>
+
+            <a class="home-btn" href="#" id="enterButton">
+                Entrada secreta →
+            </a>
+        </div>
+
+        <div class="home-right">
+            <p class="tagline">
+                Tres alas. Tres caminos. Tres vidas…
+            </p>
+
+            <div class="img-placeholder">
+                Puerta secreta de la galería
+            </div>
+        </div>
+
     </div>
-    <div class="home-right">
-      <p class="tagline">Tres alas. Tres caminos. Tres vidas…</p>
-      <div class="img-placeholder home-img scene scene-home">Puerta secreta de la galería</div>
-    </div>
-  </div>
+
 </div>
 
+<!-- ═══════════════════════════════════ -->
+<!-- ENTRADA SECRETA                    -->
+<!-- ═══════════════════════════════════ -->
 
+<div id="entrada-secreta" class="screen secret-screen">
 
+    <h1>ENTRADA SECRETA</h1>
 
+    <p>
+        Bienvenido a la zona oculta de la galería.
+    </p>
+
+    <button class="back-btn" id="backHome">
+        ← Volver al inicio
+    </button>
+
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- JAVASCRIPT                         -->
+<!-- ═══════════════════════════════════ -->
+
+<script>
+
+/* BOTÓN ENTRAR */
+
+document
+.getElementById("enterButton")
+.addEventListener("click", function(event){
+
+    event.preventDefault();
+
+    document
+    .getElementById("home")
+    .classList.remove("active");
+
+    document
+    .getElementById("entrada-secreta")
+    .classList.add("active");
+});
+
+/* BOTÓN VOLVER */
+
+document
+.getElementById("backHome")
+.addEventListener("click", function(){
+
+    document
+    .getElementById("entrada-secreta")
+    .classList.remove("active");
+
+    document
+    .getElementById("home")
+    .classList.add("active");
+});
+
+</script>
+
+</body>
+</html>
