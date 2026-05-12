@@ -1,12 +1,24 @@
 /* =========================================================
-   THE LIVING GALERIE - Boceto en escala de grises
-   Archivo CSS separado para principiantes
+   THE LIVING GALERIE - HTML + CSS separado para principiantes
+   Estilo: misterio interactivo con botones, imágenes y temporizador.
    ========================================================= */
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+:root {
+  --bg: #130f14;
+  --paper: #efe7d5;
+  --paper-dark: #d7c3a4;
+  --ink: #1f1714;
+  --muted: #6f5b4d;
+  --gold: #c99b43;
+  --red: #8d2424;
+  --green: #233f34;
+  --shadow: rgba(0, 0, 0, 0.42);
 }
 
 html {
@@ -17,65 +29,123 @@ html {
 body {
   min-height: 100vh;
   font-family: Georgia, "Times New Roman", serif;
-  background: #eeeeee;
-  color: #111111;
+  background:
+    radial-gradient(circle at top left, rgba(201, 155, 67, 0.20), transparent 28rem),
+    linear-gradient(135deg, #0d0b0f 0%, #21161a 50%, #111915 100%);
+  color: var(--ink);
 }
 
-/* Cada bloque funciona como una página de la historia. */
+/* Temporizador fijo: aparece solo en páginas de historia gracias a JavaScript. */
+.timer-widget {
+  position: fixed;
+  left: 18px;
+  top: 50%;
+  z-index: 20;
+  width: 96px;
+  height: 96px;
+  transform: translateY(-50%);
+  border: 2px solid var(--gold);
+  border-radius: 18px;
+  background: rgba(19, 15, 20, 0.94);
+  color: #fff6df;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  box-shadow: 0 16px 28px var(--shadow);
+}
+
+.timer-widget[hidden] {
+  display: none;
+}
+
+.timer-kicker {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+#timer-count {
+  display: block;
+  margin-top: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+}
+
+.timer-widget.is-ending {
+  border-color: #ff6b55;
+  animation: pulse 0.8s infinite alternate;
+}
+
+@keyframes pulse {
+  from { box-shadow: 0 0 0 rgba(255, 107, 85, 0.2); }
+  to { box-shadow: 0 0 24px rgba(255, 107, 85, 0.8); }
+}
+
+/* Cada bloque funciona como una página completa de la historia. */
 .screen {
   min-height: 100vh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid #999999;
-  background: #f5f5f5;
+  border-bottom: 1px solid rgba(201, 155, 67, 0.35);
+  background:
+    linear-gradient(rgba(239, 231, 213, 0.92), rgba(239, 231, 213, 0.92)),
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(72, 42, 29, 0.08) 22px 24px);
 }
 
 .screen:target {
-  outline: 6px solid #444444;
-  outline-offset: -6px;
+  outline: 5px solid rgba(201, 155, 67, 0.65);
+  outline-offset: -5px;
 }
 
 .screen-top-bar,
 .home-top-bar {
   width: 100%;
-  height: 12px;
-  background: #333333;
+  height: 14px;
+  background: linear-gradient(90deg, var(--red), var(--gold), var(--green));
   flex-shrink: 0;
 }
 
 /* ===================== PORTADA ===================== */
 #home {
   justify-content: center;
+  background:
+    linear-gradient(120deg, rgba(13, 11, 15, 0.88), rgba(35, 63, 52, 0.72)),
+    radial-gradient(circle at 70% 30%, rgba(201, 155, 67, 0.36), transparent 24rem);
+  color: #fff4dc;
 }
 
 .home-content {
-  width: min(1100px, 100%);
+  width: min(1120px, 100%);
   margin: 0 auto;
-  padding: 48px 32px;
+  padding: 56px 32px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 44px;
   align-items: center;
   flex: 1;
 }
 
 .home-left h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
-  line-height: 0.92;
+  font-size: clamp(3rem, 8vw, 6.4rem);
+  line-height: 0.9;
   letter-spacing: 0.08em;
   font-weight: 400;
   font-style: italic;
   text-transform: uppercase;
-  color: #111111;
+  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
 }
 
 .home-left p,
 .home-right .tagline {
   margin: 24px 0;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: #333333;
+  font-size: 1.14rem;
+  line-height: 1.55;
+  color: #e9d7b0;
 }
 
 .home-right {
@@ -87,48 +157,49 @@ body {
 
 /* ===================== ESTRUCTURA DE PÁGINA ===================== */
 .screen-label {
-  padding: 18px 40px 0;
+  padding: 20px 48px 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
+  font-size: 0.74rem;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: #555555;
+  color: var(--muted);
 }
 
 .screen-title,
 .final-title {
-  padding: 10px 40px 18px;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  line-height: 1.1;
+  padding: 10px 48px 20px;
+  font-size: clamp(1.9rem, 4vw, 3.25rem);
+  line-height: 1.08;
   font-weight: 400;
   font-style: italic;
-  color: #111111;
-  border-bottom: 1px solid #999999;
+  color: var(--ink);
+  border-bottom: 1px solid rgba(80, 52, 35, 0.35);
 }
 
+/* Estas barras dejan claro al principiante dónde va el tiempo, pero el reloj real está a la izquierda. */
 .timer-bar {
-  height: 10px;
-  margin: 16px 40px 0;
-  border: 1px solid #555555;
-  background: linear-gradient(90deg, #222222 0%, #777777 55%, #dddddd 100%);
+  height: 8px;
+  margin: 16px 48px 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--red), var(--gold), rgba(255, 255, 255, 0.35));
 }
 
 .timer-label {
   margin-top: 6px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-align: center;
   text-transform: uppercase;
-  color: #555555;
+  color: var(--muted);
 }
 
 .screen-body {
-  width: min(1200px, 100%);
+  width: min(1220px, 100%);
   margin: 0 auto;
-  padding: 28px 40px;
+  padding: 30px 48px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px) 170px;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 330px) 170px;
   gap: 28px;
   align-items: start;
   flex: 1;
@@ -136,39 +207,72 @@ body {
 
 .story-text {
   max-width: 760px;
+  padding: 22px;
+  border-left: 5px solid var(--gold);
+  background: rgba(255, 250, 235, 0.58);
+  box-shadow: 0 18px 30px rgba(88, 58, 37, 0.14);
 }
 
 .story-text p {
   margin-bottom: 14px;
-  font-size: 1.02rem;
-  line-height: 1.75;
-  color: #202020;
+  font-size: 1.03rem;
+  line-height: 1.76;
+  color: #221713;
 }
 
 .story-text strong,
 .story-text em {
-  color: #000000;
+  color: var(--red);
 }
 
-/* Espacios para imágenes: son cajas vacías en escala de grises. */
+/* ===================== IMÁGENES / ESPACIOS VISUALES ===================== */
 .img-placeholder {
   width: 100%;
-  min-height: 230px;
+  min-height: 245px;
   padding: 18px;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
-  border: 2px dashed #666666;
-  background: #dddddd;
-  color: #444444;
+  border: 3px solid #2f251c;
+  border-radius: 18px;
+  background-color: #2b211d;
+  color: #fff4df;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 20px 34px var(--shadow);
+  overflow: hidden;
 }
 
+.scene {
+  background-image:
+    linear-gradient(to top, rgba(0, 0, 0, 0.82), transparent 58%),
+    radial-gradient(circle at 30% 24%, rgba(255, 223, 158, 0.45), transparent 4.5rem),
+    linear-gradient(135deg, #171014, #4c2d27 45%, #13271f);
+}
+
+.scene-home { min-height: 320px; background-image: linear-gradient(to top, rgba(0,0,0,.75), transparent 55%), radial-gradient(circle at 50% 18%, #f3c46a, transparent 4rem), linear-gradient(90deg, #08070a 0 28%, #5b2a25 28% 32%, #14110f 32% 68%, #5b2a25 68% 72%, #08070a 72%); }
+.scene-entrance { background-image: linear-gradient(to top, rgba(0,0,0,.78), transparent 55%), radial-gradient(circle at 45% 14%, #e6ba5f, transparent 3rem), linear-gradient(90deg, #1c1717 0 18%, #0b0b0d 18% 70%, #35241f 70%); }
+.scene-office { background-image: linear-gradient(to top, rgba(0,0,0,.8), transparent 58%), radial-gradient(circle at 70% 20%, #eac77c, transparent 4rem), linear-gradient(135deg, #1b1412, #61402d 45%, #17110f); }
+.scene-envelope { background-image: linear-gradient(to top, rgba(0,0,0,.72), transparent 60%), radial-gradient(circle at 52% 48%, #e9d3a2 0 18%, transparent 19%), linear-gradient(135deg, #36261f, #8d2424, #15100f); }
+.scene-camera { background-image: linear-gradient(to top, rgba(0,0,0,.82), transparent 60%), repeating-linear-gradient(90deg, rgba(255,255,255,.14) 0 2px, transparent 2px 38px), linear-gradient(135deg, #14161a, #283c45, #111); }
+.scene-hall { background-image: linear-gradient(to top, rgba(0,0,0,.8), transparent 60%), linear-gradient(90deg, #151010 0 16%, #9c8a66 16% 18%, #261c18 18% 48%, #9c8a66 48% 50%, #1b1514 50% 82%, #9c8a66 82% 84%, #151010 84%); }
+.scene-archive { background-image: linear-gradient(to top, rgba(0,0,0,.76), transparent 57%), repeating-linear-gradient(0deg, rgba(235,214,167,.35) 0 10px, rgba(70,48,37,.25) 10px 16px), linear-gradient(135deg, #241b17, #725134, #13100f); }
+.scene-painting { background-image: linear-gradient(to top, rgba(0,0,0,.76), transparent 55%), radial-gradient(circle at 50% 42%, rgba(255,255,255,.42), transparent 5rem), linear-gradient(135deg, #1b1516, #8d2424 42%, #233f34); }
+.scene-catalog { background-image: linear-gradient(to top, rgba(0,0,0,.76), transparent 55%), repeating-linear-gradient(0deg, rgba(255,247,220,.45) 0 12px, transparent 12px 24px), linear-gradient(135deg, #161211, #88653e, #25130f); }
+.scene-security { background-image: linear-gradient(to top, rgba(0,0,0,.82), transparent 60%), radial-gradient(circle at 70% 25%, rgba(95,170,160,.35), transparent 5rem), linear-gradient(90deg, #101418, #20323a, #090b0d); }
+.scene-jaime { background-image: linear-gradient(to top, rgba(0,0,0,.82), transparent 60%), radial-gradient(circle at 50% 30%, #d1ae63, transparent 5rem), linear-gradient(135deg, #151111, #4f2a24, #101712); }
+.scene-marchetti { background-image: linear-gradient(to top, rgba(0,0,0,.83), transparent 58%), radial-gradient(circle at 38% 26%, #d7c3a4, transparent 4rem), linear-gradient(135deg, #171617, #333840, #150f0f); }
+.scene-time { background-image: linear-gradient(to top, rgba(0,0,0,.83), transparent 58%), radial-gradient(circle at center, transparent 0 22%, #c99b43 23% 25%, transparent 26%), linear-gradient(135deg, #09090a, #3d241f, #0c1110); }
+.scene-shadows { background-image: linear-gradient(to top, rgba(0,0,0,.88), transparent 55%), linear-gradient(135deg, #050505, #21151a 48%, #0c0c0c); }
+.scene-error { background-image: linear-gradient(to top, rgba(0,0,0,.82), transparent 55%), repeating-linear-gradient(45deg, rgba(141,36,36,.45) 0 12px, transparent 12px 26px), linear-gradient(135deg, #120c0d, #33272d, #080707); }
+.scene-justice { background-image: linear-gradient(to top, rgba(0,0,0,.74), transparent 55%), radial-gradient(circle at 50% 15%, #f0c66f, transparent 5rem), linear-gradient(135deg, #101812, #345140, #111); }
+
 .home-img {
-  max-width: 360px;
-  min-height: 260px;
+  max-width: 380px;
 }
 
 .story-img {
@@ -182,22 +286,24 @@ body {
 }
 
 .right-panel > div {
-  min-height: 128px;
-  border: 2px solid #444444;
-  background: #eeeeee;
+  min-height: 132px;
+  border: 2px solid #2f251c;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #fff6de, var(--paper-dark));
   display: flex;
   flex-direction: column;
+  box-shadow: 0 16px 28px rgba(80, 52, 35, 0.16);
 }
 
 .panel-label {
   padding: 10px;
-  border-bottom: 1px solid #777777;
+  border-bottom: 1px solid rgba(47, 37, 28, 0.5);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-align: center;
   text-transform: uppercase;
-  color: #111111;
+  color: #241710;
 }
 
 .panel-box {
@@ -208,16 +314,23 @@ body {
 }
 
 .panel-count {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--gold);
+  display: grid;
+  place-items: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 2.2rem;
-  color: #111111;
+  font-size: 2rem;
+  font-weight: 800;
 }
 
 /* ===================== OPCIONES ===================== */
 .choices {
-  width: min(1200px, 100%);
+  width: min(1220px, 100%);
   margin: 0 auto;
-  padding: 0 40px 36px;
+  padding: 0 48px 38px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -226,38 +339,62 @@ body {
 .btn,
 .home-btn {
   display: inline-block;
-  min-width: 180px;
-  padding: 13px 18px;
-  border: 2px solid #222222;
-  background: #f8f8f8;
-  color: #111111;
+  min-width: 190px;
+  padding: 14px 18px;
+  border: 2px solid #251913;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fff2cf, #d4a64b);
+  color: #1b120f;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
+  font-weight: 800;
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: 0 12px 18px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .btn:hover,
 .btn:focus,
 .home-btn:hover,
 .home-btn:focus {
-  background: #222222;
-  color: #ffffff;
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  outline: 3px solid rgba(141, 36, 36, 0.35);
 }
 
 .btn.secondary {
-  border-style: dashed;
-  background: #e6e6e6;
+  background: linear-gradient(135deg, #f1e4d3, #9f8d73);
 }
 
 .final-screen {
-  background: #e9e9e9;
+  background:
+    linear-gradient(rgba(19, 15, 20, 0.18), rgba(19, 15, 20, 0.18)),
+    var(--paper);
+}
+
+/* Mantiene las imágenes en la columna central y los dos cuadrados al lado derecho. */
+.story-img {
+  grid-column: 2;
+}
+
+.right-panel {
+  grid-column: 3;
+}
+
+/* Visualmente muestra primero Premios y después Pistas aunque el HTML viejo esté al revés. */
+.right-panel > div:nth-child(1) {
+  order: 2;
+}
+
+.right-panel > div:nth-child(2) {
+  order: 1;
 }
 
 /* ===================== RESPONSIVE ===================== */
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .home-content,
   .screen-body {
     grid-template-columns: 1fr;
@@ -272,12 +409,24 @@ body {
     max-width: none;
   }
 
+  .story-img,
+  .right-panel {
+    grid-column: auto;
+  }
+
   .right-panel {
     grid-template-columns: 1fr 1fr;
   }
+
+  .timer-widget {
+    top: auto;
+    bottom: 18px;
+    left: 18px;
+    transform: none;
+  }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 600px) {
   .screen-label,
   .screen-title,
   .final-title,
@@ -301,29 +450,13 @@ body {
   .home-btn {
     width: 100%;
   }
-}
 
-/* Mantiene las imágenes en la columna central y los dos cuadrados al lado derecho. */
-.story-img {
-  grid-column: 2;
-}
+  .timer-widget {
+    width: 82px;
+    height: 82px;
+  }
 
-.right-panel {
-  grid-column: 3;
-}
-
-/* Visualmente muestra primero Premios y después Pistas, como pidió el boceto. */
-.right-panel > div:nth-child(1) {
-  order: 2;
-}
-
-.right-panel > div:nth-child(2) {
-  order: 1;
-}
-
-@media (max-width: 900px) {
-  .story-img,
-  .right-panel {
-    grid-column: auto;
+  #timer-count {
+    font-size: 1.25rem;
   }
 }
