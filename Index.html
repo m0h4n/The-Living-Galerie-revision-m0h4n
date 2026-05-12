@@ -9,6 +9,11 @@
 </head>
 <body>
 
+<div id="timer-widget" class="timer-widget" aria-live="polite" hidden>
+  <span class="timer-kicker">Tiempo</span>
+  <span id="timer-count">02:00</span>
+</div>
+
 <!-- ═══════════════════════════════════════════════════ -->
 <!--  HOME                                               -->
 <!-- ═══════════════════════════════════════════════════ -->
@@ -22,7 +27,7 @@
     </div>
     <div class="home-right">
       <p class="tagline">Tres alas. Tres caminos. Tres vidas…</p>
-      <div class="img-placeholder home-img">[Imagen: puerta oscura]</div>
+      <div class="img-placeholder home-img scene scene-home">Puerta secreta de la galería</div>
     </div>
   </div>
 </div>
@@ -44,6 +49,9 @@
       <p>Una sala amplia, silenciosa, con cuadros colgados demasiado separados entre sí, como si cada uno necesitara espacio para respirar. Ninguna ficha técnica. Ningún nombre de artista. Solo un pequeño texto en la pared: <strong>"Todas las piezas han sido adquiridas fuera de lo convencional."</strong></p>
       <p>Sabes lo que significa. Cerca de la entrada, una mujer te mira sin sonreír. No te pregunta quién eres. Solo te entrega un folleto doblado. Tres zonas marcadas a mano. Antes de irte esta mañana, tu informante alcanzó a decir algo por teléfono. No lo terminó. Solo esto: <strong>"No es una galería…"</strong></p>
       <p>Miras el lugar otra vez. Algo aquí no encaja.</p>
+    </div>
+    <div class="story-img">
+      <div class="img-placeholder scene scene-entrance">Entrada secreta</div>
     </div>
     <div class="right-panel">
       <div>
@@ -81,7 +89,7 @@
       <p><strong>Algo aquí está mal.</strong></p>
     </div>
     <div class="story-img">
-      <div class="img-placeholder">[Imagen: encargado en oficina oscura]</div>
+      <div class="img-placeholder scene scene-office">Oficina del encargado</div>
     </div>
     <div class="right-panel">
       <div>
@@ -108,6 +116,8 @@
   <div class="screen-top-bar"></div>
   <div class="screen-label">Quedarte y Presionarlo</div>
   <div class="screen-title">Quedarte y Presionarlo</div>
+  <div class="timer-bar"></div>
+  <div class="timer-label">Temporizador</div>
   <div class="screen-body">
     <div class="story-text">
       <p>Encuentras a Marchetti en el pasillo principal, mirando una de las obras con expresión que no es admiración sino agotamiento. Cuando lo confrontas con el sello, algo en él se quiebra. No de golpe. Como el cristal fino: primero una grieta, luego el colapso silencioso.</p>
@@ -115,6 +125,9 @@
       <p>Te lo cuenta todo en susurros tensos: lleva tres años siendo chantajeado. Voss descubrió algo de su pasado —no te dice qué— y lo usa como palanca. Marchetti sabe de los robos. Los ha presenciado en silencio, paralizado, sin poder hacer nada.</p>
       <p><strong>"Madame Elara nunca ha existido"</strong>, dice finalmente. <strong>"Voss la inventó. Voss es esta galería."</strong></p>
       <p>Sus ojos te miran con algo parecido al alivio. Como si confesar fuera lo único que le quedara. Y tú debes decidir qué hacer con eso.</p>
+    </div>
+    <div class="story-img">
+      <div class="img-placeholder scene scene-envelope">Sobre sellado</div>
     </div>
     <div class="right-panel">
       <div>
@@ -129,7 +142,7 @@
   </div>
   <div class="choices">
     <a class="btn" href="#confrontar-jaime">Creerle y dirigirse contra Jaime</a>
-    <a class="btn" href="#final-error-fatal">Acusar formalmente a Marchetti</a>
+    <a class="btn" href="#confrontar-marchetti">Acusar formalmente a Marchetti</a>
     <a class="btn secondary" href="#final-sombras">Retirarte sin acusar a nadie</a>
   </div>
 </div>
@@ -152,7 +165,7 @@
       <p>El nombre en el sistema que autorizó el acceso esa noche: Jaime Rodríguez. Permiso de nivel administrador. Firmado por Madame Pauliña.</p>
     </div>
     <div class="story-img">
-      <div class="img-placeholder">[Imagen: cámara de seguridad, corredor nocturno]</div>
+      <div class="img-placeholder scene scene-camera">Cámara y corredor nocturno</div>
     </div>
     <div class="right-panel">
       <div>
@@ -189,6 +202,9 @@
       <p>No te volteas.</p>
       <p>Sigues caminando. Tienes tres zonas pendientes y el tiempo no espera.</p>
     </div>
+    <div class="story-img">
+      <div class="img-placeholder scene scene-hall">Pasillo sin fichas</div>
+    </div>
     <div class="right-panel">
       <div>
         <div class="panel-label">Pistas</div>
@@ -224,7 +240,7 @@
       <p>No son varias personas. Es alguien intentando escribir como si fuera otra persona. Cierras la carpeta. Ahora tienes más preguntas que respuestas.</p>
     </div>
     <div class="story-img">
-      <div class="img-placeholder">[Imagen: corredor oscuro con archivadores]</div>
+      <div class="img-placeholder scene scene-archive">Corredor de archivadores</div>
     </div>
     <div class="right-panel">
       <div>
@@ -262,7 +278,7 @@
       <p>En el extremo inferior derecho, con luz ultravioleta, se lee: <em>"The Living Galerie no exhibe arte. Lo guarda."</em></p>
     </div>
     <div class="story-img">
-      <div class="img-placeholder">[Imagen: pintura iluminada, figura oculta bajo capas]</div>
+      <div class="img-placeholder scene scene-painting">Pintura iluminada</div>
     </div>
     <div class="right-panel">
       <div>
@@ -300,7 +316,7 @@
       <p><strong>"Lote 7 — pendiente. Pauliña confirma entrega."</strong></p>
     </div>
     <div class="story-img">
-      <div class="img-placeholder">[Imagen: catálogo con marcas en lápiz rojo]</div>
+      <div class="img-placeholder scene scene-catalog">Catálogo marcado</div>
     </div>
     <div class="right-panel">
       <div>
@@ -339,7 +355,7 @@
       <p><strong>Madame Pauliña no vendía arte. Administraba silencio.</strong></p>
     </div>
     <div class="story-img">
-      <div class="img-placeholder">[Imagen: libro antiguo con listas manuscritas]</div>
+      <div class="img-placeholder scene scene-catalog">Lista de compradores</div>
     </div>
     <div class="right-panel">
       <div>
@@ -376,6 +392,9 @@
       <p>Sobre el escritorio, un log de acceso impreso. Alguien lo subrayó con marcador amarillo en tres entradas: todas entre las 2:30 y las 3:10 a.m. Todas autorizadas por el mismo código.</p>
       <p>El código de acceso de Madame Pauliña.</p>
       <p>Pero Madame Pauliña lleva seis meses sin aparecer en la galería. Alguien usó sus credenciales. Y alguien sabía exactamente cuándo las cámaras parpadeaban.</p>
+    </div>
+    <div class="story-img">
+      <div class="img-placeholder scene scene-security">Sala de seguridad</div>
     </div>
     <div class="right-panel">
       <div>
@@ -414,7 +433,7 @@
       <p><strong>"Bien hecho"</strong>, dice lentamente. Y entonces comete el único error de su vida: subestima cuánto tiempo te queda.</p>
     </div>
     <div class="story-img">
-      <div class="img-placeholder">[Imagen: hombre elegante, escultura al fondo]</div>
+      <div class="img-placeholder scene scene-jaime">Jaime frente a la escultura</div>
     </div>
     <div class="right-panel">
       <div>
@@ -440,17 +459,18 @@
   <div class="screen-top-bar"></div>
   <div class="screen-label">Confrontar a Marchetti</div>
   <div class="screen-title">Confrontar a Marchetti</div>
+  <div class="timer-bar"></div>
+  <div class="timer-label">Temporizador</div>
   <div class="screen-body">
     <div class="story-text">
-      <p>Jaime Andrés ocupa el espacio y se siente gran tensión. Alto. Frío. Ojos que calculan antes de que el cerebro termine de pensar.</p>
-      <p>Lo encuentras en el corredor central, frente a una escultura que reconoces de inmediato: fue robada de la Iglesia de Monserrate hace dieciséis meses.</p>
-      <p><strong>"Detective"</strong>, dice sin voltearse. <strong>"Llevas demasiado tiempo aquí para ser un simple visitante."</strong></p>
-      <p>No retrocedes. Le presentas lo que sabes: los registros de la tarjeta de acceso, los metadatos borrados, los documentos de Madame Pauliña escritos con su propia letra. Por primera vez, algo cambia en su expresión. No miedo. Algo más difícil de nombrar.</p>
-      <p>Admiración.</p>
-      <p><strong>"Bien hecho"</strong>, dice lentamente. Y entonces comete el único error de su vida: subestima cuánto tiempo te queda.</p>
+      <p>Marchetti no intenta huir cuando pronuncias su nombre. Se queda quieto, con una mano apoyada en el marco de una obra que no tiene título.</p>
+      <p>Le muestras el sello del sobre, las horas cortadas de las cámaras y la firma que aparece una y otra vez en los documentos falsos. Todo apunta hacia él con una precisión demasiado perfecta.</p>
+      <p><strong>"Eso es lo que Jaime quiere que veas"</strong>, responde. Su voz no tiembla por culpa, sino por cansancio.</p>
+      <p>Si lo acusas ahora, tendrás un sospechoso. Pero también podrías estar cerrando la única puerta que conduce al verdadero dueño de The Living Galerie.</p>
+      <p>La decisión pesa más que cualquier cuadro de la sala.</p>
     </div>
     <div class="story-img">
-      <div class="img-placeholder">[Imagen: hombre mayor con traje, mirada fija]</div>
+      <div class="img-placeholder scene scene-marchetti">Marchetti bajo sospecha</div>
     </div>
     <div class="right-panel">
       <div>
@@ -490,7 +510,7 @@
       <p><em>No reuniste suficientes pistas antes de que te sacaran del lugar.</em></p>
     </div>
     <div class="story-img">
-      <div class="img-placeholder">[Imagen: corredor vacío, perspectiva larga]</div>
+      <div class="img-placeholder scene scene-time">Corredor sin tiempo</div>
     </div>
     <div class="right-panel">
       <div>
@@ -526,6 +546,9 @@
       <p>Tú también.</p>
       <p><strong>FINAL: LAS SOMBRAS GANAN</strong><br><em>El misterio permanece sin resolver.</em></p>
     </div>
+    <div class="story-img">
+      <div class="img-placeholder scene scene-shadows">Las sombras ganan</div>
+    </div>
     <div class="right-panel">
       <div>
         <div class="panel-label">Pistas</div>
@@ -558,6 +581,9 @@
       <p>Las doce obras de arte se disuelven en el mercado negro como azúcar en agua oscura.</p>
       <p>Te quedas con la sensación de haber tenido la verdad entre las manos y haberla soltado por la sombra que alguien más proyectó sobre ella.</p>
       <p>FINAL: ERROR FATAL<br><em>Acusaste al sospechoso equivocado. Jaime escapó.</em></p>
+    </div>
+    <div class="story-img">
+      <div class="img-placeholder scene scene-error">Error fatal</div>
     </div>
     <div class="right-panel">
       <div>
@@ -592,6 +618,9 @@
       <p>La última noche antes de que cierren la galería permanentemente, alguien deja una nota en tu oficina. Solo dos palabras, escritas con una caligrafía que ya reconoces:</p>
       <p><strong>"Bien jugado."</strong></p>
     </div>
+    <div class="story-img">
+      <div class="img-placeholder scene scene-justice">Justicia</div>
+    </div>
     <div class="right-panel">
       <div>
         <div class="panel-label">Pistas</div>
@@ -608,5 +637,6 @@
   </div>
 </div>
 
+<script src="Script.js"></script>
 </body>
 </html>
