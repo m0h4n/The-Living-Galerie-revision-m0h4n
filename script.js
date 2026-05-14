@@ -1,5 +1,5 @@
 // =========================================================
-// THE LIVING GALERIE - JavaScript sencillo para principiantes
+// THE LIVING GALERIE -
 // Controla el temporizador de 2 minutos y el movimiento entre escenas.
 // =========================================================
 
