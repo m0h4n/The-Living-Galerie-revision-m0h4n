@@ -5,15 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Living Galerie</title>
 <link rel="stylesheet" href="style.css">
-
+ <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
+    <div class="escena">
+      <div class="reloj">
+
+        <div class="contador" id="contador">60</div>
+
+        <div class="label">SEG</div>
+      </div>
+      <div class="barra-container">
+
+        <div class="relleno" id="relleno"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
 
 <div id="timer-widget" class="timer-widget" aria-live="polite" hidden>
   <span class="timer-kicker">Tiempo</span>
   <span id="timer-count">02:00</span>
 </div>
-
 <!-- ═══════════════════════════════════════════════════ -->
 <!--  ARCHIVO OCULTO                                    -->
 <!-- ═══════════════════════════════════════════════════ -->

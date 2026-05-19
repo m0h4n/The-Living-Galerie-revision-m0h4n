@@ -26,6 +26,8 @@ html {
 }
 
 body {
+     padding-top:120px;
+
   min-height: 100vh;
   font-family: Georgia, "Times New Roman", serif;
   background:
@@ -458,4 +460,141 @@ body {
   #timer-count {
     font-size: 1.25rem;   
   }
+}
+
+
+/* 
+========================================
+ESCENA GENERAL
+========================================
+
+Usamos flexbox para organizar
+horizontalmente:
+
+[ reloj ] [ barra ]
+*/
+
+.escena {
+  width: 100%;
+  height: 220px;
+
+  display: flex;
+  align-items: center;
+
+  margin-top: 120px;
+  margin-bottom: 40px;
+}
+
+/* 
+========================================
+RELOJ LATERAL
+========================================
+
+Zona informativa del sistema temporal.
+*/
+
+.reloj {
+  width: 220px;
+  height: 100%;
+
+  display: flex;
+
+  /* organizamos verticalmente */
+  flex-direction: column;
+
+  justify-content: top;
+  align-items: top;
+
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+
+  background: #efe7d5;
+}
+
+/* 
+========================================
+CONTADOR NUMÉRICO
+========================================
+
+Número grande del temporizador.
+*/
+
+.contador {
+  color: white;
+
+  font-size: 6rem;
+  font-weight: bold;
+
+  line-height: 1;
+
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* 
+========================================
+ETIQUETA "SEG"
+========================================
+
+Texto complementario pequeño.
+*/
+
+.label {
+  margin-top: 10px;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  font-size: 1rem;
+
+  letter-spacing: 4px;
+}
+
+/* 
+========================================
+CONTENEDOR DE LA BARRA
+========================================
+
+Este espacio define el área donde crecerá
+el relleno horizontal.
+*/
+
+.barra-container {
+  position: relative;
+
+  /* ocupa todo el espacio restante */
+  flex: 1;
+
+  height: 70px;
+
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+
+  background:  #efe7d5;
+
+  overflow: hidden;
+}
+
+/* 
+========================================
+RELLENO ANIMADO
+========================================
+
+La barra comienza vacía.
+
+Luego JavaScript irá aumentando
+su ancho progresivamente.
+*/
+
+.relleno {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 0%;
+  height: 100%;
+
+  /* gradiente cromático */
+  background: linear-gradient(to right, green 0%, blue 50%, red 100%);
+
+  /* suaviza la animación */
+  transition: width 1s linear;
 }
